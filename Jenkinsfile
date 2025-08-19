@@ -14,9 +14,11 @@ pipeline {
         NEXUS_PORT = '8081'
         NEXUS_USER = 'admin'
         NEXUS_PASS = 'admin123'
+        NEXUS_LOGIN=credentials('nexuslogin')
         APP_DIR = 'simple-java-maven-app'
         SONARSERVER = 'sonarserver'
         SONARSCANNER = 'sonarscanner'
+        PROJECT_NAME='demo-app'
     }
 
     stages {
@@ -84,6 +86,26 @@ pipeline {
                         }
                     }
                 }
+            }
+        }
+
+        stage('Upload Artifact') {
+            steps {
+                    nexusArtifactUploader(
+        nexusVersion: 'nexus3',
+        protocol: 'http',
+        nexusUrl: "${NEXUS_HOST}:${NEXUS_PORT}",
+        groupId: 'QA',
+        version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+        repository: "${RELEASE_REPO}",
+        credentialsId: "${NEXUS_LOGIN}",
+        artifacts: [
+            [artifactId: "${PROJECT_NAME}",
+             classifier: '',
+             file: 'target/my-app-1.0-SNAPSHOT.jar',
+             type: 'jar']
+        ]
+     )
             }
         }
     }
