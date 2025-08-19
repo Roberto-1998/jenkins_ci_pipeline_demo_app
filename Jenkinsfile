@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir(env.APP_DIR){
-                 sh 'mvn -s settings.xml -DskipTests clean package'
+                 sh 'mvn -s ../settings.xml -DskipTests clean package'
                 }
             }
         }
