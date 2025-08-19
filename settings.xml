@@ -13,7 +13,7 @@
   </mirrors>
 
   <servers>
-    <!-- Opcional: credenciales para repositorios que requieran autenticación -->
+    <!--credenciales para repositorios que requieran autenticación -->
     <server>
       <id>${SNAPSHOT_REPO}</id>
       <username>${NEXUS_USER}</username>
