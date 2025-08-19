@@ -14,11 +14,11 @@ pipeline {
         NEXUS_PORT = '8081'
         NEXUS_USER = 'admin'
         NEXUS_PASS = 'admin123'
-        NEXUS_LOGIN= 'nexuslogin'
+        NEXUS_LOGIN = 'nexuslogin'
         APP_DIR = 'simple-java-maven-app'
         SONARSERVER = 'sonarserver'
         SONARSCANNER = 'sonarscanner'
-        PROJECT_NAME='demo-app'
+        PROJECT_NAME = 'demo-app'
     }
 
     stages {
@@ -91,6 +91,7 @@ pipeline {
 
         stage('Upload Artifact') {
             steps {
+                dir(env.APP_DIR) {
                     nexusArtifactUploader(
         nexusVersion: 'nexus3',
         protocol: 'http',
@@ -106,6 +107,7 @@ pipeline {
              type: 'jar']
         ]
      )
+                }
             }
         }
     }
