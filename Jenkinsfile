@@ -60,16 +60,16 @@ pipeline {
             steps{
                 dir(env.APP_DIR){
                     withSonarQubeEnv("${SONARSERVER}") {
-                        sh '''${scannerHome}/bin/sonar-scanner \
+                        sh """${scannerHome}/bin/sonar-scanner \
                         -Dsonar.projectkey=demo-app \
                         -Dsonar.projectName=demo-app \
                         -Dsonar.projectVersion=1.0 \
                         -Dsonar.sources=src/main/java \
                         -Dsonar.tests=src/test/java \
-                        -Dsonar.java.binaries=/target/classes \
+                        -Dsonar.java.binaries=target/classes \
                         -Dsonar.junit.reportsPath=target/surefire-reports/ \
                         -Dsonar.jacoco.reportsPath=target/jacoco.exec \
-                        -Dsonar.java.checkstyle.reportsPaths=target/checkstyle-result.xml'''
+                        -Dsonar.java.checkstyle.reportsPaths=target/checkstyle-result.xml"""
                     }
                 }
             }
