@@ -23,7 +23,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir(env.APP_DIR) {
-                    sh 'mvn -s ../settings.xml -DskipTests clean package'
+                    sh 'mvn -s ../settings.xml -DskipTests -U clean package'
                 }
             }
             post {
@@ -39,8 +39,8 @@ pipeline {
         stage('Test') {
             steps {
                 dir(env.APP_DIR) {
-                    sh 'mvn -s ../settings.xml test'
-                    sh 'mvn -s ../settings.xml verify'
+                    sh 'mvn -s ../settings.xml -U test'
+                    sh 'mvn -s ../settings.xml -U verify'
                 }
             }
         }
