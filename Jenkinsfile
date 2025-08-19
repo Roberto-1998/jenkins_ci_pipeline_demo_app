@@ -48,15 +48,7 @@ pipeline {
                     sh 'mvn  -s ../settings.xml checkstyle:checkstyle'
                 }
             }
-            post {
-                always {
-                    checkstyle canComputeNew: false,
-                               defaultEncoding: '',
-                               healthy:'',
-                               pattern: 'target/checkstyle-result.xml',
-                               unHealthy:''
-                }
-            }
+           
         }
     }
 }
