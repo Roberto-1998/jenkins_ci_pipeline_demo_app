@@ -14,7 +14,7 @@ pipeline {
         NEXUS_PORT = '8081'
         NEXUS_USER = 'admin'
         NEXUS_PASS = 'admin123'
-        NEXUS_LOGIN=credentials('nexuslogin')
+        NEXUS_LOGIN= 'nexuslogin'
         APP_DIR = 'simple-java-maven-app'
         SONARSERVER = 'sonarserver'
         SONARSCANNER = 'sonarscanner'
