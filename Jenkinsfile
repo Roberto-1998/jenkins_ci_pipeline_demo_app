@@ -38,7 +38,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                tool name: 'JDK17', type: 'jdk'
+               /*  tool name: 'JDK17', type: 'jdk' */
                 dir(env.APP_DIR) {
                     sh 'mvn -s ../settings.xml test'
                     sh 'mvn -s ../settings.xml verify'
