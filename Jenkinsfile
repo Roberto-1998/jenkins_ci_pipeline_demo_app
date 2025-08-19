@@ -23,7 +23,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir(env.APP_DIR) {
-                    sh 'mvn -s ../settings.xml -DskipTests -U clean package'
+                    sh 'mvn -s ../settings.xml -DskipTests clean package'
                 }
             }
             post {
@@ -38,6 +38,7 @@ pipeline {
 
         stage('Test') {
             steps {
+                tool name: 'JDK17', type: 'jdk'
                 dir(env.APP_DIR) {
                     sh 'mvn -s ../settings.xml test'
                     sh 'mvn -s ../settings.xml verify'
