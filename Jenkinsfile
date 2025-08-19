@@ -10,7 +10,7 @@ pipeline {
         CENTRAL_REPO = 'demo-app-maven-central'
         SNAPSHOT_REPO = 'demo-app-snapshot'
         RELEASE_REPO = 'demo-app-release'
-        NEXUS_HOST = '13.221.5.242'
+        NEXUS_HOST = '172.31.37.76'
         NEXUS_PORT = '8081'
         NEXUS_USER = 'admin'
         NEXUS_PASS = 'admin123'
