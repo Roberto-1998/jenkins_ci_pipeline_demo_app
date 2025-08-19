@@ -61,7 +61,7 @@ pipeline {
                 dir(env.APP_DIR){
                     withSonarQubeEnv("${SONARSERVER}") {
                         sh """${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectkey=demo-app \
+                        -Dsonar.projectKey=demo-app \
                         -Dsonar.projectName=demo-app \
                         -Dsonar.projectVersion=1.0 \
                         -Dsonar.sources=src/main/java \
