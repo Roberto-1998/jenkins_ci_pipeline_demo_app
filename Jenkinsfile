@@ -33,5 +33,30 @@ pipeline {
                 }
             }
         }
+
+        stage('Test') {
+            steps {
+                dir(emv.APP_DIR) {
+                    sh 'mvn -s ../settings.xml test'
+                    sh 'mvn -s ../settings.xml verify'
+                }
+            }
+        }
+        stage('Code Quality') {
+            steps {
+                dir(env.APP_DIR) {
+                    sh 'mvn  -s ../settings.xml checkstyle:checkstyle'
+                }
+            }
+            post {
+                always {
+                    checkstyle canComputeNew: false,
+                               defaultEncoding: '',
+                               healthy:'',
+                               pattern: 'target/checkstyle-result.xml',
+                               unHealthy:''
+                }
+            }
+        }
     }
 }
