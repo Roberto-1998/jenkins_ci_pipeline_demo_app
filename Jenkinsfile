@@ -39,8 +39,8 @@ pipeline {
         stage('Test') {
             steps {
                 dir(env.APP_DIR) {
-                    sh 'mvn -s ../settings.xml -U test'
-                    sh 'mvn -s ../settings.xml -U verify'
+                    sh 'mvn -s ../settings.xml test'
+                    sh 'mvn -s ../settings.xml verify'
                 }
             }
         }
