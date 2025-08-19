@@ -20,8 +20,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                dir(env.APP_DIR){
-                 sh 'mvn -s ../settings.xml -DskipTests clean package'
+                dir(env.APP_DIR) {
+                    sh 'mvn -s ../settings.xml -DskipTests clean package'
+                }
+            }
+            post {
+                success {
+                    dir(env.APP_DIR) {
+                        echo 'Great! Now archiving the artifact.'
+                        archiveArtifacts artifact: '**/target/*.jar'
+                    }
                 }
             }
         }
