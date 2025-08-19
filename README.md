@@ -10,7 +10,7 @@ Demo of a **complete Continuous Integration (CI) pipeline** for a Java Maven app
 [GitHub Repository](https://github.com/Roberto-1998/jenkins_ci_pipeline_demo_app)
 
 ## Project Structure
-
+- **Pipeline Overview:** ![CI Pipeline](screenshots/ci-pipeline.png)  
 ```
 .
 |-- Jenkinsfile
@@ -102,10 +102,7 @@ cd jenkins_ci_pipeline_demo_app
 
 ---
 
-## Screenshots
 
-- **Pipeline Overview:** ![CI Pipeline](screenshots/ci-pipeline.png)  
-- **Jenkins Job:** ![Jenkins](screenshots/jenkins-general.png)  
-- **Nexus Integration:** ![Nexus](screenshots/nexus-integration.png)  
-- **SonarQube Integration:** ![SonarQube](screenshots/sonarqube-integration.png)  
-- **Slack Notifications:** ![Slack](screenshots/slack-integration.png)
+
+
+
