@@ -15,8 +15,8 @@ pipeline {
         NEXUS_USER = 'admin'
         NEXUS_PASS = 'admin123'
         APP_DIR = 'simple-java-maven-app'
-        SONARSERVER='sonarserver'
-        SONARSCANNER='sonarscanner'
+        SONARSERVER = 'sonarserver'
+        SONARSCANNER = 'sonarscanner'
     }
 
     stages {
@@ -38,7 +38,6 @@ pipeline {
 
         stage('Test') {
             steps {
-               /*  tool name: 'JDK17', type: 'jdk' */
                 dir(env.APP_DIR) {
                     sh 'mvn -s ../settings.xml test'
                     sh 'mvn -s ../settings.xml verify'
@@ -53,12 +52,12 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis'){
-            environment{
+        stage('SonarQube Analysis') {
+            environment {
                 scannerHome = tool "${SONARSCANNER}"
             }
-            steps{
-                dir(env.APP_DIR){
+            steps {
+                dir(env.APP_DIR) {
                     withSonarQubeEnv("${SONARSERVER}") {
                         sh """${scannerHome}/bin/sonar-scanner \
                         -Dsonar.projectKey=demo-app \
