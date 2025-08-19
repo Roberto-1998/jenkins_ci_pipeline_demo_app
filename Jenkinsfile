@@ -28,7 +28,7 @@ pipeline {
                 success {
                     dir(env.APP_DIR) {
                         echo 'Great! Now archiving the artifact.'
-                        archiveArtifacts artifact: '**/target/*.jar'
+                        archiveArtifacts artifacts: '**/target/*.jar'
                     }
                 }
             }
